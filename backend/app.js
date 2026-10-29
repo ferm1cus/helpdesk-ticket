@@ -5,6 +5,7 @@ const { notFound, errorHandler } = require('./middleware/errorHandler');
 require('./models/seed').seedAdmin();
 
 const app = express();
+app.disable('x-powered-by');
 // app.use(cors());
 app.use(express.json());
 
