@@ -26,8 +26,8 @@ const create = (user, { title, description, priority, category }) => {
 };
 
 const list = (user, query) => {
-  const page = Math.max(parseInt(query.page) || 1, 1);
-  const limit = Math.min(Math.max(parseInt(query.limit) || 10, 1), 50);
+  const page = Math.max(Number.parseInt(query.page) || 1, 1);
+  const limit = Math.min(Math.max(Number.parseInt(query.limit) || 10, 1), 50);
   const filters = {
     status: query.status, priority: query.priority, category: query.category, q: query.q,
     assignedTo: query.assignedTo === 'me' ? user.id : query.assignedTo,

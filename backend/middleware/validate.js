@@ -2,7 +2,8 @@ const { AppError } = require('./errorHandler');
 const PRIORITIES = ['Low', 'Medium', 'High', 'Critical'];
 const CATEGORIES = ['Hardware', 'Software', 'Network', 'Access', 'Other'];
 const ROLES = ['employee', 'agent', 'admin'];
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL = /^[^@\s]{1,64}@[^@\s.]{1,63}(?:\.[^@\s.]{1,63})+$/;
 
 const required = (...fields) => (req, res, next) => {
   const missing = fields.filter((f) => req.body[f] === undefined || String(req.body[f]).trim() === '');
