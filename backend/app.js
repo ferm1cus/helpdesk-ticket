@@ -8,10 +8,18 @@ const app = express();
 // app.use(cors());
 app.use(express.json());
 
+const clean = (s) => String(s).replace(/[\r\n]+/g, '').replace(/[^\x20-\x7e]/g, '?').slice(0, 200);
+
 // Request logging (silenced during tests)
+// if (process.env.NODE_ENV !== 'test') {
+//   app.use((req, res, next) => {
+//     console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`);
+//     next();
+//   });
+// }
 if (process.env.NODE_ENV !== 'test') {
   app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`);
+    console.log(`${new Date().toISOString()} ${clean(req.method)} ${clean(req.originalUrl)}`);
     next();
   });
 }
