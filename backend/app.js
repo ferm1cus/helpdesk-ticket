@@ -1,11 +1,11 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const path = require('path');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 require('./models/seed').seedAdmin();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 // Request logging (silenced during tests)
